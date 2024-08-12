@@ -1,0 +1,69 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="clr-namespace:AvaloniaApp"
+		xmlns:cba="clr-namespace:CalcBinding;assembly=CalcBindingAva"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApp.MainWindow"
+        Title="AvaloniaApp">
+	<Window.Resources>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1.5*"/>
+			<RowDefinition Height="8.5*"/>
+			<RowDefinition Height="100"/>
+		</Grid.RowDefinitions>
+
+		<!-- Twister Spinner Wheel -->
+		<Grid Grid.Row="1" x:Name="OutsideGrid">
+			<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+				<local:Slice x:Name="TwisterSpinner" OnClicked="TwisterSpinner_OnClicked" Radius="{cba:Binding #OutsideGrid.Bounds.Height / 2}">
+					<local:Slice.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="0"/>
+							<TranslateTransform X="{cba:Binding #OutsideGrid.Bounds.Height / 4}" Y="{cba:Binding #OutsideGrid.Bounds.Height / 4}"/>
+						</TransformGroup>
+					</local:Slice.RenderTransform>
+				</local:Slice>
+			</Grid>
+		</Grid>
+
+		<!-- Colors Selection -->
+		<UniformGrid x:Name="SelectionGrid" Grid.Row="2" Rows="0" Columns="10">
+			<!-- Orange -->
+			<local:CircleColor MaxWidth="{Binding $parent.Bounds.Height}" Height="{Binding $self.Bounds.Width}"
+                               CircleBackground="#36454F" CircleFill="#FF5733" ColorName="Orange" CircleStroke="#CD310F" OnClicked="CircleColor_OnClicked"/>
+			<!-- Yellow -->
+			<local:CircleColor MaxWidth="{Binding $parent.Bounds.Height}" Height="{Binding $self.Bounds.Width}"
+                CircleBackground="#36454F" CircleFill="#F2F257" ColorName="Yellow" CircleStroke="#D5D516" OnClicked="CircleColor_OnClicked"/>
+			<!-- Blue -->
+			<local:CircleColor MaxWidth="{Binding $parent.Bounds.Height}" Height="{Binding $self.Bounds.Width}"
+                CircleBackground="#36454F" CircleFill="#1679EC" ColorName="Blue" CircleStroke="#166FD5" OnClicked="CircleColor_OnClicked"/>
+			<!-- Green -->
+			<local:CircleColor MaxWidth="{Binding $parent.Bounds.Height}" Height="{Binding $self.Bounds.Width}"
+                CircleBackground="#36454F" CircleFill="#31E438" ColorName="Green" CircleStroke="#1FBF26" OnClicked="CircleColor_OnClicked"/>
+			<!-- Purple -->
+			<local:CircleColor MaxWidth="{Binding $parent.Bounds.Height}" Height="{Binding $self.Bounds.Width}"
+                CircleBackground="#36454F" CircleFill="#9F16E4" ColorName="Purple" CircleStroke="#850BC3" OnClicked="CircleColor_OnClicked"/>
+			<!-- Pink -->
+			<local:CircleColor MaxWidth="{Binding $parent.Bounds.Height}" Height="{Binding $self.Bounds.Width}"
+                CircleBackground="#36454F" CircleFill="#F139E5" ColorName="Pink" CircleStroke="#DF27D3" OnClicked="CircleColor_OnClicked"/>
+			<!-- Red -->
+			<local:CircleColor MaxWidth="{Binding $parent.Bounds.Height}" Height="{Binding $self.Bounds.Width}"
+                CircleBackground="#36454F" CircleFill="#CD1349" ColorName="Red" CircleStroke="#B70F1B" OnClicked="CircleColor_OnClicked"/>
+			<!-- Black -->
+			<local:CircleColor MaxWidth="{Binding $parent.Bounds.Height}" Height="{Binding $self.Bounds.Width}"
+                CircleBackground="#36454F" CircleFill="#1B1212" ColorName="Black" CircleStroke="Black" OnClicked="CircleColor_OnClicked"/>
+			<!-- Gray -->
+			<local:CircleColor MaxWidth="{Binding $parent.Bounds.Height}" Height="{Binding $self.Bounds.Width}"
+                CircleBackground="#36454F" CircleFill="DarkGray" ColorName="Gray" CircleStroke="Gray" OnClicked="CircleColor_OnClicked"/>
+			<!-- White -->
+			<local:CircleColor MaxWidth="{Binding $parent.Bounds.Height}" Height="{Binding $self.Bounds.Width}"
+                CircleBackground="#36454F" CircleFill="AntiqueWhite" ColorName="White" CircleStroke="Tan" OnClicked="CircleColor_OnClicked"/>
+		</UniformGrid>
+	</Grid>
+</Window>

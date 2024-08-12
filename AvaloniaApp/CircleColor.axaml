@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:local="clr-namespace:AvaloniaApp"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:CompileBindings="True"
+             x:Class="AvaloniaApp.CircleColor">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<!-- Outer Border -->
+		<Ellipse PointerReleased="Ellipse_PointerReleased" Name="OuterBorder" Stretch="Uniform" Fill="{Binding CircleStroke, DataType={x:Type local:CircleColor}}" Stroke="{Binding CircleStroke, DataType={x:Type local:CircleColor}}" StrokeThickness="5" Width="{Binding $self.Bounds.Height}">
+			<Ellipse.Styles>
+				<Style Selector="Ellipse">
+					<Setter Property="Margin" Value="3"/>
+				</Style>
+				<Style Selector="Ellipse:pointerover">
+					<Setter Property="Margin" Value="0"/>
+				</Style>
+			</Ellipse.Styles>
+			<Ellipse.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleX="1" ScaleY="1"/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform X="0" Y="0"/>
+				</TransformGroup>
+			</Ellipse.RenderTransform>
+			<Ellipse.Effect>
+				<BlurEffect Radius="4"/>
+			</Ellipse.Effect>
+		</Ellipse>
+
+		<!-- Black Background -->
+		<Ellipse Name="MiddleBorder" IsHitTestVisible="False" Fill="{Binding CircleBackground, DataType={x:Type local:CircleColor}}" Stretch="Uniform" Margin="5" Width="{Binding $self.Bounds.Height}"/>
+
+		<!-- Circle Fill -->
+		<Ellipse Name="InnerCircle" IsHitTestVisible="False" Stroke="{Binding CircleFill, DataType={x:Type local:CircleColor}}" Fill="{Binding CircleFill, DataType={x:Type local:CircleColor}}" Stretch="Uniform" StrokeThickness="5" Margin="10" Width="{Binding $self.Bounds.Height}">
+			<Ellipse.Effect>
+				<BlurEffect Radius="2"/>
+			</Ellipse.Effect>
+		</Ellipse>
+	</Grid>
+</UserControl>
