@@ -1,18 +1,23 @@
 <UserControl xmlns="https://github.com/avaloniaui"
 			 xmlns:local="clr-namespace:AvaloniaApp"
+			 xmlns:c="clr-namespace:CalcBinding;assembly=CalcBindingAva"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AvaloniaApp.Slice">
+             x:Class="AvaloniaApp.Slice"
+			 x:CompileBindings="True">
 	<Grid>
 		<Grid x:Name="uxGrid">
 
 		</Grid>
-		<Path PointerReleased="Path_PointerReleased" x:Name="Default" Stroke="Black" StrokeThickness="0" Fill="Tan" Opacity="1">
+		<Path HorizontalAlignment="Center" VerticalAlignment="Center" PointerReleased="Path_PointerReleased" x:Name="Default" Stroke="Black" StrokeThickness="0" Fill="Tan" Opacity="1">
 			<Path.Data>
-				<EllipseGeometry RadiusX="{Binding Radius, DataType={x:Type local:Slice}}" RadiusY="{Binding Radius, DataType={x:Type local:Slice}}" />
+				<EllipseGeometry RadiusX="{Binding Radius, DataType={x:Type local:Slice}, Mode=TwoWay}" RadiusY="{Binding Radius, DataType={x:Type local:Slice}, Mode=TwoWay}" />
 			</Path.Data>
+			<Path.RenderTransform>
+				<TranslateTransform X="{Binding RatioX, DataType={x:Type local:Slice}, Mode=TwoWay}" Y="{Binding RatioY, DataType={x:Type local:Slice}, Mode=TwoWay}"/>
+			</Path.RenderTransform>
 		</Path>
 	</Grid>
 </UserControl>

@@ -41,6 +41,26 @@ public partial class Slice : UserControl
         set => SetValue(RadiusProperty, value);
     }
 
+    public static readonly StyledProperty<double> RatioXProperty =
+        AvaloniaProperty.Register<Slice, double>(nameof(RatioX), defaultValue: 50.0);
+
+    // Property wrapper for easier use
+    public double RatioX
+    {
+        get => GetValue(RatioXProperty);
+        set => SetValue(RatioXProperty, value);
+    }
+
+    public static readonly StyledProperty<double> RatioYProperty =
+    AvaloniaProperty.Register<Slice, double>(nameof(RatioY), defaultValue: 50.0);
+
+    // Property wrapper for easier use
+    public double RatioY
+    {
+        get => GetValue(RatioYProperty);
+        set => SetValue(RatioYProperty, value);
+    }
+
     #endregion
 
     private Random random = new Random();

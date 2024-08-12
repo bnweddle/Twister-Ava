@@ -1,7 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:local="clr-namespace:AvaloniaApp"
-		xmlns:cba="clr-namespace:CalcBinding;assembly=CalcBindingAva"
+		xmlns:c="clr-namespace:CalcBinding;assembly=CalcBindingAva"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -11,21 +11,21 @@
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="1.5*"/>
-			<RowDefinition Height="8.5*"/>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="30"/>
 			<RowDefinition Height="100"/>
 		</Grid.RowDefinitions>
 
 		<!-- Twister Spinner Wheel -->
 		<Grid Grid.Row="1" x:Name="OutsideGrid">
-			<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-				<local:Slice x:Name="TwisterSpinner" OnClicked="TwisterSpinner_OnClicked" Radius="{cba:Binding #OutsideGrid.Bounds.Height / 2}">
+			<Grid>
+				<local:Slice x:Name="TwisterSpinner" OnClicked="TwisterSpinner_OnClicked" Radius="{c:Binding ($parent.Bounds.Height / 2)}" RatioX="{c:Binding ($parent.Bounds.Height / 4)}" RatioY="{c:Binding ($parent.Bounds.Height / 4)}">
 					<local:Slice.RenderTransform>
 						<TransformGroup>
 							<ScaleTransform/>
 							<SkewTransform/>
 							<RotateTransform Angle="0"/>
-							<TranslateTransform X="{cba:Binding #OutsideGrid.Bounds.Height / 4}" Y="{cba:Binding #OutsideGrid.Bounds.Height / 4}"/>
 						</TransformGroup>
 					</local:Slice.RenderTransform>
 				</local:Slice>
@@ -33,7 +33,7 @@
 		</Grid>
 
 		<!-- Colors Selection -->
-		<UniformGrid x:Name="SelectionGrid" Grid.Row="2" Rows="0" Columns="10">
+		<UniformGrid x:Name="SelectionGrid" Grid.Row="3" Rows="0" Columns="10">
 			<!-- Orange -->
 			<local:CircleColor MaxWidth="{Binding $parent.Bounds.Height}" Height="{Binding $self.Bounds.Width}"
                                CircleBackground="#36454F" CircleFill="#FF5733" ColorName="Orange" CircleStroke="#CD310F" OnClicked="CircleColor_OnClicked"/>
