@@ -32,7 +32,7 @@ public partial class Slice : UserControl
 
     // Define the AvaloniaProperty
     public static readonly StyledProperty<double> RadiusProperty =
-        AvaloniaProperty.Register<Slice, double>(nameof(Radius));
+        AvaloniaProperty.Register<Slice, double>(nameof(Radius), defaultValue: 100);
 
     // Property wrapper for easier use
     public double Radius
