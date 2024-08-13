@@ -11,13 +11,10 @@
 		<Grid x:Name="uxGrid">
 
 		</Grid>
-		<Path HorizontalAlignment="Center" VerticalAlignment="Center" PointerReleased="Path_PointerReleased" x:Name="Default" Stroke="Black" StrokeThickness="0" Fill="Tan" Opacity="1">
+		<Path PointerReleased="Path_PointerReleased" x:Name="Default" Stroke="Black" StrokeThickness="0" Fill="Tan" Opacity="1">
 			<Path.Data>
 				<EllipseGeometry RadiusX="{Binding Radius, DataType={x:Type local:Slice}, Mode=TwoWay}" RadiusY="{Binding Radius, DataType={x:Type local:Slice}, Mode=TwoWay}" />
 			</Path.Data>
-			<Path.RenderTransform>
-				<TranslateTransform X="{Binding RatioX, DataType={x:Type local:Slice}, Mode=TwoWay}" Y="{Binding RatioY, DataType={x:Type local:Slice}, Mode=TwoWay}"/>
-			</Path.RenderTransform>
 		</Path>
 	</Grid>
 </UserControl>

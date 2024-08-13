@@ -8,6 +8,7 @@
         x:Class="AvaloniaApp.MainWindow"
         Title="AvaloniaApp">
 	<Window.Resources>
+		<local:TransformConverter x:Key="SliceTransformConverter"/>
 	</Window.Resources>
 	<Grid>
 		<Grid.RowDefinitions>
@@ -19,17 +20,16 @@
 
 		<!-- Twister Spinner Wheel -->
 		<Grid Grid.Row="1" x:Name="OutsideGrid">
-			<Grid>
-				<local:Slice x:Name="TwisterSpinner" OnClicked="TwisterSpinner_OnClicked" Radius="{c:Binding ($parent.Bounds.Height / 2)}" RatioX="{c:Binding ($parent.Bounds.Height / 4)}" RatioY="{c:Binding ($parent.Bounds.Height / 4)}">
-					<local:Slice.RenderTransform>
-						<TransformGroup>
-							<ScaleTransform/>
-							<SkewTransform/>
-							<RotateTransform Angle="0"/>
-						</TransformGroup>
-					</local:Slice.RenderTransform>
-				</local:Slice>
-			</Grid>
+			<local:Slice x:Name="TwisterSpinner" OnClicked="TwisterSpinner_OnClicked" Radius="{c:Binding ($parent.Bounds.Height / 2)}" RatioX="{c:Binding ($parent.Bounds.Height / 4)}" RatioY="{c:Binding ($parent.Bounds.Height / 4)}">
+				<local:Slice.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform Angle="0"/>
+						<TranslateTransform X="{Binding $parent[Grid].Bounds.Height, Converter={StaticResource SliceTransformConverter}, ConverterParameter=4}" Y="{Binding $parent[Grid].Bounds.Height, Converter={StaticResource SliceTransformConverter}, ConverterParameter=4}"/>
+					</TransformGroup>
+				</local:Slice.RenderTransform>
+			</local:Slice>
 		</Grid>
 
 		<!-- Colors Selection -->

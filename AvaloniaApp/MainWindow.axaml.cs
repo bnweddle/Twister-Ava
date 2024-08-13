@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using System.Diagnostics;
 
 namespace AvaloniaApp
 {
@@ -22,6 +23,9 @@ namespace AvaloniaApp
 
         private void CircleColor_OnClicked(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine(OutsideGrid.Height);
+            Debug.WriteLine(OutsideGrid.Bounds.Height);
+
             CircleColor circleColor = (CircleColor)sender;
             if (circleColor.Selected)
             {
